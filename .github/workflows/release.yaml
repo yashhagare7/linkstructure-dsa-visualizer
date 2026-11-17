@@ -3,17 +3,24 @@ name: Build and Release Windows EXE
 on:
   push:
     tags:
-      - 'v*' # Triggers automatically whenever you push a tag like v1.0.1
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        description: 'Release version tag (e.g., v2.0.0)'
+        required: true
+        default: 'v2.0.0'
+        type: string
 
 permissions:
-  contents: write # Required to allow the workflow to publish a release
+  contents: write
 
 jobs:
-  build-windows:
+  build-and-release:
     runs-on: windows-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Set up Python
@@ -26,11 +33,21 @@ jobs:
           python -m pip install --upgrade pip
           pip install pyinstaller
 
-      - name: Compile EXE
-        run: pyinstaller --onefile --windowed linkedin_app.py
+      - name: Run unit tests (if present)
+        shell: pwsh
+        run: |
+          if (Test-Path "test_linkedin_simulator.py") {
+            python -m unittest test_linkedin_simulator.py
+          }
 
-      - name: Create GitHub Release & Upload EXE
+      - name: Build Windows Executable (.exe)
+        run: |
+          pyinstaller --onefile --noconsole --name "LinkedIn_DSA_Simulator" linkedin_simulator.py
+
+      - name: Create GitHub Release and Upload EXE
         uses: softprops/action-gh-release@v2
         with:
-          files: dist/linkedin_app.exe
+          tag_name: ${{ inputs.tag_name || github.ref_name }}
+          name: LinkedIn DSA Simulator ${{ inputs.tag_name || github.ref_name }}
           generate_release_notes: true
+          files: dist/LinkedIn_DSA_Simulator.exe
