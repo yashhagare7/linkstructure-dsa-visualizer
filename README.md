@@ -1,10 +1,10 @@
-# 🚀 LinkedIn Architecture & Data Structures (DSA) Simulator v2.0
+#  LinkedIn Architecture & Data Structures (DSA) Simulator
 
-This a project which is only created for the purpose of understanding DSA concepts in social media platforms. Designed specifically as an advanced university-level demonstration uniting real-world software engineering with core computer science theory.
+This a project which is only created for the purpose of understanding DSA concepts in social media platforms. Designed specifically as an simple & easy to understand.
 
 ---
 
-## 🚀 Quick Start & Compilation
+##  Quick Start & Compilation
 
 ### 1. Run Directly with Python
 No third-party libraries required (standard Python standard library only: `tkinter`, `heapq`, `collections`, `math`, `time`, `random`):
@@ -37,7 +37,7 @@ dist/LinkedIn_DSA_Simulator.exe
 
 ---
 
-## 🖥️ System Architecture: The Split-Screen Philosophy
+##  System Architecture: The Split-Screen Philosophy
 
 The application features a hybrid split-screen layout (`1220x720` resolution with high-DPI scaling awareness):
 
@@ -56,7 +56,7 @@ The application features a hybrid split-screen layout (`1220x720` resolution wit
 
 ---
 
-## 📊 Data Structures & Algorithmic Analysis
+##  Data Structures & Algorithmic Analysis
 
 ### 1. Connections — Undirected Graph (`GraphNetwork`)
 * **Underlying Structure**: Adjacency list backed by Python hash sets: `dict[str, set[str]]`.
@@ -117,7 +117,7 @@ The application features a hybrid split-screen layout (`1220x720` resolution wit
 
 ---
 
-## 🧪 Unit Testing Architecture
+##  Unit Testing Architecture
 
 The project includes an automated test harness in `test_linkedin_simulator.py`:
 
@@ -140,9 +140,6 @@ The project includes an automated test harness in `test_linkedin_simulator.py`:
 
 ---
 
-## 👨‍💻 Author & Coursework Details
+## Project Details
 
-* **Student / Author**: Indrajit
-* **Coursework**: Data Structures & Algorithms (DSA) Practical Project
 * **Language & Framework**: Python 3.10+ / `tkinter` / `ttk`
-* **Version**: 2.0 (Enhanced UI/UX, Eased Animations, Unit Tested)
